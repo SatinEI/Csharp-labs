@@ -14,7 +14,6 @@ namespace ConsoleApp1
             get { return Name; }
             set
             {
-                // Add validation: Name cannot be null or empty
                 if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("Name cannot be null or empty.");
@@ -28,7 +27,6 @@ namespace ConsoleApp1
             get { return Age; }
             set
             {
-                // Add validation: Age must be between 0 and 150
                 if (value < 0 || value > 100)
                 {
                     throw new ArgumentOutOfRangeException("Age must be between 0 and 100.");
@@ -39,7 +37,7 @@ namespace ConsoleApp1
 
         public virtual void PrintInfo()
         {
-            Console.WriteLine($"Customer: {Name}, {Age} years old");
+            Console.WriteLine($"Person: {Name}, {Age} years old");
         }
     }
 }

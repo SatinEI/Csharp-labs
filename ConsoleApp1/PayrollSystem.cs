@@ -2,24 +2,17 @@
 
 namespace ConsoleApp1
 {
-    public class PayrollSystem
+    internal class PayrollSystem : IPayroll
     {
-        public void ProcessSalary(object employee)
+        public void ProcessSalary(Employee emp)
         {
-            if (employee is Employee emp)
-            {
-                Console.WriteLine($"Processing salary for employee {emp.name}: {emp.salary}");
-                emp.salary += 1000;
-            }
-            else if (employee is Manager mgr)
-            {
-                Console.WriteLine($"Processing salary for manager {mgr.name}: {mgr.salary}");
-                mgr.salary += 2000;
-            }
-            else
-            {
-                throw new ArgumentException("Unknown employee type");
-            }
+            Console.WriteLine($"Processing salary for employee {emp.name}: {emp.salary}");
+            emp.salary += 1000;
+        }
+        public void ProcessSalary(Manager mgr)
+        {
+            Console.WriteLine($"Processing salary for manager {mgr.name}: {mgr.salary}");
+            mgr.salary += 2000;
         }
 
         public decimal CalculateBonus(string employeeType, decimal baseSalary, int years, bool hasCertification)

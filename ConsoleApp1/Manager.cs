@@ -5,24 +5,29 @@ namespace ConsoleApp1
 {
     internal class Manager : Employee
     {
-        private string? Department;
-        private List<Employee> Team = new();
+        private string? _department;
+        private readonly List<Employee> _team = new();
 
-        public List<Employee> team
-        { get { return Team; } set { team = value; } }
+        public IReadOnlyList<Employee> Team => _team.AsReadOnly();
 
-        public string? department
-        { get { return Department; } set { Department = value; } }
+        public string? Department
+        { get { return _department; } set { _department = value; } }
 
 
         public override void PrintInfo()
         {
-            Console.WriteLine($"Manager: {name}, {age} years old, Department: {department}");
+            Console.WriteLine($"Manager: {name}, {age} years old, Department: {_department}");
         }
 
-        public void AssignTaskToEmployee(Employee emp, string task)
+        internal void AssignTaskToEmployee(Employee emp, string task)
         {
             Console.WriteLine($"Assigning task '{task}' to {emp.name}");
+        }
+        public void AddTeamMember(Employee employee)
+        {
+            if (employee == null)
+                throw new ArgumentNullException(nameof(employee));
+            _team.Add(employee);
         }
     }
 }

@@ -25,10 +25,10 @@
                 name = "Bob",
                 age = 40,
                 salary = 80000,
-                department = "IT"
+                Department = "IT"
             };
 
-            manager.team.Add(employee);
+            manager.AddTeamMember(employee);
 
             employee.salary = 55000;
 
