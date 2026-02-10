@@ -1,9 +1,9 @@
-﻿namespace ConsoleApp1
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace ConsoleApp1
 {
     internal class ProgramExample
     {
-        /// ДАННЫЙ КОД НЕ ЗАПУСТИТСЯ, ЭТО ПРИМЕР ИСПОЛЬЗОВАНИЯ КЛАССОВ ИЗ БИБЛИОТЕКИ OOP_Fundamentals_Library
-        /// СКОПИРУЙТЕ ЕГО В МЕТОД MAIN ОСНОВОГО ПРОЕКТА ДЛЯ ПРОВЕРКИ РАБОТЫ
         static void Main(string[] args)
         {
             var customer = new Customer
@@ -27,21 +27,21 @@
                 salary = 80000,
                 Department = "IT"
             };
-
+            List<Person> people_list = new();
+            people_list.Add(customer);
+            people_list.Add(employee);
+            people_list.Add(manager);
+            foreach (var person in people_list)
+            {
+                person.PrintInfo();
+            }
             manager.AddTeamMember(employee);
+            employee.IncreaseSalary(5000);
+            employee.ProcessSalary();
+            manager.ProcessSalary();
 
-            employee.salary = 55000;
-
-            customer.PrintInfo();
-            employee.PrintInfo();
-            manager.PrintInfo();
-
-            var payroll = new PayrollSystem();
-            payroll.ProcessSalary(employee);
-            payroll.ProcessSalary(manager);
-
-            ReportService.GenerateEmployeeReport(employee);
-            ReportService.GenerateManagerReport(manager);
+            employee.GenerateReport();
+            manager.GenerateReport();
         }
     }
 }

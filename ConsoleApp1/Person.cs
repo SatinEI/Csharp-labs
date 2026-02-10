@@ -21,7 +21,6 @@ namespace ConsoleApp1
                 Name = value;
             }
         }
-
         public int age
         {
             get { return Age; }
