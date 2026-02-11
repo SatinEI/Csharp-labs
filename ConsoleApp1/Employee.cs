@@ -8,7 +8,7 @@ namespace ConsoleApp1
         private decimal Salary;
         private string? Position;
         private decimal Bonus = 0;
-        private bool Sertification = false;
+        private bool Сertification = false;
 
         public decimal salary
         { get { return Salary; } set { Salary = value; } }
@@ -17,8 +17,8 @@ namespace ConsoleApp1
         { get { return Position; } set { Position = value; } }
         public decimal bonus
         { get { return Bonus; } set { Bonus = value; } }
-        public bool sertification
-        { get { return Sertification; } set { Sertification = value; } }
+        public bool сertification
+        { get { return Сertification; } set { Сertification = value; } }
 
         public override void PrintInfo()
         {
@@ -34,33 +34,33 @@ namespace ConsoleApp1
         {
             Console.WriteLine($"Processing payroll for {name}: {salary}");
         }
-        public virtual void GenerateReport()
+        void IReportable.GenerateReport()
         {
             Console.WriteLine($"Employee Report:");
             Console.WriteLine($"  Name: {name}");
             Console.WriteLine($"  Age: {age}");
             Console.WriteLine($"  Salary: {salary}");
         }
-        public virtual void ProcessSalary()
+        void IPayroll.ProcessSalary()
         {
             Console.WriteLine($"Processing salary for employee {name}: {salary}");
             salary += 1000;
         }
-        public virtual void CalculateBonus()
+        void IPayroll.CalculateBonus()
         {
             bonus = salary * 0.1m;
             if (age > 5)
             {
                 bonus += 500;
             }
-            if (sertification == true)
+            if (сertification == true)
             {
                 bonus += 200;
             }
         }
         public void GiveSertification()
         {
-            sertification = true;
+            сertification = true;
         }
     }
 }

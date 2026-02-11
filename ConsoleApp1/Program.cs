@@ -27,7 +27,9 @@ namespace ConsoleApp1
                 salary = 80000,
                 Department = "IT"
             };
-            List<Person> people_list = new();
+            List<Person> people_list = [];
+            List<IReportable> reportables = new List<IReportable> { employee, manager };
+            List<IPayroll> payrolls = new List<IPayroll> { employee, manager };
             people_list.Add(customer);
             people_list.Add(employee);
             people_list.Add(manager);
@@ -37,11 +39,14 @@ namespace ConsoleApp1
             }
             manager.AddTeamMember(employee);
             employee.IncreaseSalary(5000);
-            employee.ProcessSalary();
-            manager.ProcessSalary();
-
-            employee.GenerateReport();
-            manager.GenerateReport();
+            foreach(var p in payrolls)
+            {
+                p.ProcessSalary();
+            }
+            foreach (var p in reportables)
+            {
+                p.GenerateReport();
+            }
         }
     }
 }

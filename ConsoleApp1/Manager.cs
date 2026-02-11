@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace ConsoleApp1
 {
-    internal class Manager : Employee, IReportable
+    internal class Manager : Employee, IReportable,IPayroll
     {
         private string? _department;
         private readonly List<Employee> _team = new();
@@ -26,26 +26,26 @@ namespace ConsoleApp1
         {
             _team.Add(employee);
         }
-        public override void GenerateReport()
+        void IReportable.GenerateReport()
         {
             Console.WriteLine($"Manager Report:");
             Console.WriteLine($"  Name: {name}");
             Console.WriteLine($"  Department: {Department}");
             Console.WriteLine($"  Team Size: {Team.Count}"); 
         }
-        public override void ProcessSalary()
+        void IPayroll.ProcessSalary()
         {
             Console.WriteLine($"Processing salary for manager {name}: {salary}");
             salary += 2000;
         }
-        public override void CalculateBonus()
+        void IPayroll. CalculateBonus()
         {
             bonus = salary * 0.2m;
             if (age > 5)
             {
                 bonus +=500;
             }
-            if (sertification == true)
+            if (сertification == true)
             {
                 bonus += 200;
             }
