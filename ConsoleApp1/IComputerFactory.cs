@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    interface IPayroll
+    public interface IComputerFactory
     {
-        void ProcessSalary();
-        void CalculateBonus();
+        Computer CreateComputer();
     }
 }

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal interface IReportable
+    public interface ICloneable
     {
-        void GenerateReport();
+        Computer ShallowCopy();
+        Computer DeepCopy();
     }
 }
