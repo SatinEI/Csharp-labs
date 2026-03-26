@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal interface IReportable
+    public interface IFormatStrategy
     {
-        void GenerateReport();
+        string Format(string message, DateTime timestamp);
     }
 }
