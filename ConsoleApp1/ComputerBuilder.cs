@@ -11,14 +11,13 @@
 
         public Computer Build()
         {
-            if (string.IsNullOrEmpty(_computer.CPU) ||
-                string.IsNullOrEmpty(_computer.GPU) ||
-                _computer.RAM <= 0)
+            if (string.IsNullOrEmpty(_computer.CPU) || string.IsNullOrEmpty(_computer.GPU) || _computer.RAM <= 0)
                 throw new InvalidOperationException("Не заполнены обязательные поля");
-
             return _computer;
         }
 
-        public void Reset() => _computer = new Computer();
+        public void Reset() {
+            _computer = new Computer(); 
+        }
     }
 }

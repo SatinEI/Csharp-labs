@@ -6,7 +6,7 @@
         {
             Console.WriteLine("=== КОНФИГУРАТОР КОМПЬЮТЕРНЫХ СИСТЕМ ===\n");
 
-            // 1. Factory Method
+            // Factory
             Console.WriteLine("1. ФАБРИЧНЫЙ МЕТОД");
             var officePC = new OfficeComputerFactory().CreateComputer();
             var gamingPC = new GamingComputerFactory().CreateComputer();
@@ -16,7 +16,7 @@
             Console.Write("Игровой ПК: "); gamingPC.Display();
             Console.Write("Домашний ПК: "); homePC.Display();
 
-            // 2. Builder
+            // Builder
             Console.WriteLine("\n2. СТРОИТЕЛЬ");
             var customPC = new ComputerBuilder()
                 .WithCPU("AMD Ryzen 7 7800X3D")
@@ -28,13 +28,13 @@
                 .Build();
             Console.Write("Кастомный ПК: "); customPC.Display();
 
-            // 3. Singleton Registry
+            // Singleton
             Console.WriteLine("\n3. SINGLETON РЕЕСТР");
             var registry = PrototypeRegistry.Instance;
             var registry2 = PrototypeRegistry.Instance;
             Console.WriteLine($"Один экземпляр: {ReferenceEquals(registry, registry2)}");
 
-            // Инициализация прототипов
+            // Prototype
             registry.AddPrototype("office", new OfficeComputerFactory().CreateComputer());
             registry.AddPrototype("gaming", new GamingComputerFactory().CreateComputer());
             registry.AddPrototype("home", new HomeComputerFactory().CreateComputer());
@@ -47,7 +47,7 @@
 
             registry.DisplayAllPrototypes();
 
-            // 4. ДЕМОНСТРАЦИЯ ShallowCopy vs DeepCopy
+            // ShallowCopy and DeepCopy
             Console.WriteLine("\n4. ПОВЕРХНОСТНОЕ vs ГЛУБОКОЕ КОПИРОВАНИЕ");
 
             var testPC = new ComputerBuilder()
@@ -61,7 +61,7 @@
             Console.WriteLine("\nОРИГИНАЛ:");
             testPC.Display();
 
-            // Поверхностное копирование
+            // Shallow copy
             var shallow = testPC.ShallowCopy();
             Console.WriteLine("\n--- ПОВЕРХНОСТНОЕ КОПИРОВАНИЕ ---");
             Console.WriteLine("Добавляем компонент в ПОВЕРХНОСТНУЮ копию...");
@@ -73,7 +73,7 @@
             testPC.Display();
             Console.WriteLine("РЕЗУЛЬТАТ: Компонент появился и в оригинале! (список один на двоих)");
 
-            // Глубокое копирование
+            // Deep copy
             var deep = testPC.DeepCopy();
             Console.WriteLine("\n--- ГЛУБОКОЕ КОПИРОВАНИЕ ---");
             Console.WriteLine("Добавляем компонент в ГЛУБОКУЮ копию...");
@@ -85,7 +85,7 @@
             testPC.Display();
             Console.WriteLine("РЕЗУЛЬТАТ: Оригинал не изменился! (списки независимы)");
 
-            // 5. Защита прототипов в реестре
+            // prototype test
             Console.WriteLine("\n5. ЗАЩИТА ПРОТОТИПОВ В РЕЕСТРЕ");
             Console.WriteLine("Берем копию игрового ПК из реестра и изменяем её...");
 
