@@ -8,9 +8,6 @@ namespace ConsoleApp1
 {
     public abstract class EventHandlerBase
     {
-        virtual string FormatMessage(string type, object data) { }
-        virtual void SendMessage(string message) { }
-        virtual void LogResult() { }
         protected IFormatStrategy _formatStrategy; //текущая стратегия
         protected EventHandlerBase(IFormatStrategy strategy)
         {
@@ -21,13 +18,22 @@ namespace ConsoleApp1
         {
             _formatStrategy = strategy;
         }
+        public virtual string FormatMessage(string type, object data)
+        {
+            string format_message = $"{type}: {data.ToString()}";
+
+            return _formatStrategy.Format(format_message, DateTime.Now);
+        }
+        public virtual void SendMessage(string message)
+        {
+            Console.WriteLine($"{message}");
+        }
         // Данный метод определит последовательность вызовов
         //Обратите внимание на сигнатуру
         protected void ProcessEvent(MetricEventArgs e)
         {
             var message = FormatMessage(e.EventType, e.Data); //форматируем по стратегии
             SendMessage(message); //отправляем уведомление
-            LogResult(); //логируем результат (опционально)
         }
     }
 }
