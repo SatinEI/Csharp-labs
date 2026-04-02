@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    public interface ICloneable
+    public class PrintingState
     {
-        Computer ShallowCopy();
-        Computer DeepCopy();
     }
 }
