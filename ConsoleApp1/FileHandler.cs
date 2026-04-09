@@ -17,7 +17,6 @@ namespace ConsoleApp1
 
         public override void SendMessage(string message)
         {
-            // Дозапись сообщения в файл с новой строки
             System.IO.File.AppendAllText(_filePath, message + Environment.NewLine);
             Console.WriteLine($"[File Notification]: Message saved to {_filePath}");
         }

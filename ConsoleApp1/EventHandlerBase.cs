@@ -30,7 +30,7 @@ namespace ConsoleApp1
         }
         // Данный метод определит последовательность вызовов
         //Обратите внимание на сигнатуру
-        protected void ProcessEvent(MetricEventArgs e)
+        internal void ProcessEvent(MetricEventArgs e)
         {
             var message = FormatMessage(e.EventType, e.Data); //форматируем по стратегии
             SendMessage(message); //отправляем уведомление

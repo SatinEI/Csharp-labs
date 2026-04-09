@@ -22,12 +22,10 @@ namespace ConsoleApp1
             monitor.OnMetricExceeded += (e) => consoleHandler.ProcessEvent(e);
             monitor.OnMetricExceeded += (e) => fileHandler.ProcessEvent(e);
             monitor.CheckMetric("CPU_Temperature", 85.5, 80.0);
-
-            Console.WriteLine("\n--- Changing Strategy on the fly ---");
+            Console.WriteLine("\nChanging Strategy");
             consoleHandler.SetStrategy(jsonStrategy);
             monitor.CheckMetric("RAM_Usage", 92.0, 90.0);
             monitor.CheckMetric("Disk_Space", 45.0, 95.0);
-            Console.WriteLine("\n--- Monitoring Finished ---");
             Console.ReadKey();
         }
     }
