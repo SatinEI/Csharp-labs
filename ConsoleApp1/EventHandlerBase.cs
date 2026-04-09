@@ -18,7 +18,7 @@ namespace ConsoleApp1
         {
             _formatStrategy = strategy;
         }
-        public virtual string FormatMessage(string type, object data)
+        public string FormatMessage(string type, object data)
         {
             string format_message = $"{type}: {data.ToString()}";
 

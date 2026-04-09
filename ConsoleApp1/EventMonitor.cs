@@ -17,8 +17,6 @@ namespace ConsoleApp1
             Console.WriteLine($"[Monitor]: Checking {metricName} ({value} vs {threshold})");
             if (value > threshold)
             {
-
-
                 //ЗДЕСЬ ВАМ НУЖНО СОЗДАТЬ ДАННЫЕ МЕТРИКИ (eventData)
                 var eventData = new MetricData(metricName, value, threshold,DateTime.Now);
 

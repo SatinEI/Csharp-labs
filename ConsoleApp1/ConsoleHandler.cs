@@ -9,7 +9,6 @@ namespace ConsoleApp1
     public class ConsoleHandler : EventHandlerBase
     {
         public ConsoleHandler(IFormatStrategy strategy) : base(strategy) { }
-
         public override void SendMessage(string message)
         {
             Console.WriteLine($"[Console Notification]: {message}");
