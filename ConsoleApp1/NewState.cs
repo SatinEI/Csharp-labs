@@ -8,17 +8,29 @@ namespace ConsoleApp1
 {
     public class NewState : IDocumentState
     {
-        public void Print(Document document) => Console.WriteLine("[FSM: Error] Печать невозможна из - за ошибки.Сначала сбросьте документ(Reset).");
+        public void Print(Document document)
+        {
+            document.Mediator.Notify(document, "RequestPrint", document);
+        }
 
-        public void AddToQueue(Document document) => Console.WriteLine("[FSM: Error] Нельзя добавить в очередь из-за ошибки.Сначала сбросьте документ.");
+        public void AddToQueue(Document document)
+        {
+            document.Mediator.Notify(document, "AddToQueue", document);
+        }
 
-        public void CompletePrinting(Document document) => Console.WriteLine("[FSM: Error] Ошибка не устранена.");
+        public void CompletePrinting(Document document)
+        {
+            Console.WriteLine($"[FSM: New] Документ '{document.Title}' ещё не печатался.");
+        }
 
-        public void FailPrinting(Document document) => Console.WriteLine("[FSM:Error] Документ уже в состоянии ошибки.");
+        public void FailPrinting(Document document)
+        {
+            Console.WriteLine($"[FSM: New] Документ '{document.Title}' ещё не печатался, ошибка невозможна.");
+        }
 
         public void Reset(Document document)
         {
-            Console.WriteLine("[FSM:Error] Новый документ нельзя сбросить");
+            Console.WriteLine($"[FSM: New] Документ '{document.Title}' уже в состоянии New, сброс не требуется.");
         }
     }
 }

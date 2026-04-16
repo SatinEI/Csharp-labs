@@ -8,11 +8,13 @@ namespace ConsoleApp1
 {
     public abstract class Colleague
     {
-        protected IMediator Mediator;
-        // Метод для инъекции посредника
+        private IMediator _mediator;
+
+        public IMediator Mediator => _mediator;
+
         public void SetMediator(IMediator mediator)
         {
-            Mediator = mediator;
+            _mediator = mediator;
         }
     }
 }

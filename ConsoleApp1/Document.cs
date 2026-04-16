@@ -6,17 +6,23 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    public class Document
+    public class Document : Colleague
     {
-        IDocumentState State;
-        // Метод для смены состояния
+        public string Title { get; private set; }
+        private IDocumentState State { get; set; }
+
+        public Document(string title)
+        {
+            Title = title;
+            State = new NewState();
+        }
+
         public void SetState(IDocumentState state) => State = state;
 
-        // Делегирование поведения текущему состоянию
         public void Print() => State.Print(this);
         public void AddToQueue() => State.AddToQueue(this);
         public void CompletePrinting() => State.CompletePrinting(this);
-        public void FailPrinting(IMediator mediator) => State.FailPrinting(this);
+        public void FailPrinting() => State.FailPrinting(this);
         public void Reset() => State.Reset(this);
     }
 }
